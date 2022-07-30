@@ -1,5 +1,5 @@
 
-image: node:16.16.0-buster
+image: gitpod/workspace-node-lts
 
 github:
   prebuilds:
