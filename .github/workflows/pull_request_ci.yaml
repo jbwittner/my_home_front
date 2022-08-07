@@ -5,7 +5,6 @@ on:
       - develop
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 jobs:
   Check_eslint:
@@ -61,3 +60,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: -Dsonar.organization=jbwittner -Dsonar.projectKey=jbwittner_my_home_front -Dsonar.sources=. -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+        env:
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
