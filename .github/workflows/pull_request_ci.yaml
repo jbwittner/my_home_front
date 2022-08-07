@@ -18,6 +18,7 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
       - name: Clean install
         run: npm ci
   Check_eslint:
@@ -32,6 +33,7 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
       - name: Check eslint
         run: npm run eslint
   Build:
@@ -46,6 +48,7 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
       - name: Build
         run: npm run build
   Test_and_sonar:
@@ -60,6 +63,7 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
       - name: Test
         run: npm run test:coverage
       - name: SonarCloud Scan
