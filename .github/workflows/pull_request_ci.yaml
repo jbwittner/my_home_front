@@ -59,8 +59,4 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          args: >
-            -Dsonar.organization=jbwittner \
-            -Dsonar.projectKey=jbwittner_my_home_front \
-            -Dsonar.sources=. \
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+          args: -Dsonar.organization=jbwittner -Dsonar.projectKey=jbwittner_my_home_front -Dsonar.sources=. -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
