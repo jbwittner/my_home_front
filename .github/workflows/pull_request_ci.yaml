@@ -44,7 +44,7 @@ jobs:
           cache: 'npm'
       - name: Build
         run: npm run build
-  Test and Sonar:
+  Test and sonar:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
