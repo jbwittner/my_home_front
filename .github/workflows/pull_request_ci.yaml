@@ -8,7 +8,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 jobs:
-  Clean install:
+  Clean_install:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
           cache: 'npm'
       - name: Clean install
         run: npm ci
-  Check eslint:
+  Check_eslint:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
           cache: 'npm'
       - name: Build
         run: npm run build
-  Test and sonar:
+  Test_and_sonar:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
