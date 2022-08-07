@@ -8,19 +8,6 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 jobs:
-  Clean_install:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.1'
-          registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
   Check_eslint:
     runs-on: ubuntu-20.04
     needs:
@@ -34,6 +21,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+      - name: Clean install
+        run: npm ci
       - name: Check eslint
         run: npm run eslint
   Build:
@@ -49,6 +38,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+      - name: Clean install
+        run: npm ci
       - name: Build
         run: npm run build
   Test_and_sonar:
@@ -64,6 +55,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+      - name: Clean install
+        run: npm ci
       - name: Test
         run: npm run test:coverage
       - name: SonarCloud Scan
