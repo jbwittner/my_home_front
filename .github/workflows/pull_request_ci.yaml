@@ -22,6 +22,8 @@ jobs:
         run: npm ci
   Check_eslint:
     runs-on: ubuntu-20.04
+    needs:
+      - Clean_install
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -34,6 +36,8 @@ jobs:
         run: npm run eslint
   Build:
     runs-on: ubuntu-20.04
+    needs:
+      - Check_eslint
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -46,6 +50,8 @@ jobs:
         run: npm run build
   Test_and_sonar:
     runs-on: ubuntu-20.04
+    needs:
+      - Build
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
