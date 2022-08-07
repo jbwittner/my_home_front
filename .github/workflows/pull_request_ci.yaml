@@ -5,10 +5,9 @@ on:
       - develop
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 jobs:
-  Clean install:
+  Check_eslint:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -18,22 +17,15 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
       - name: Clean install
         run: npm ci
-  Check eslint:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.1'
-          registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
       - name: Check eslint
         run: npm run eslint
   Build:
     runs-on: ubuntu-20.04
+    needs:
+      - Check_eslint
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -42,10 +34,15 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+      - name: Clean install
+        run: npm ci
       - name: Build
         run: npm run build
-  Test and Sonar:
+  Test_and_sonar:
     runs-on: ubuntu-20.04
+    needs:
+      - Build
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -54,9 +51,15 @@ jobs:
           node-version: '16.15.1'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+      - name: Clean install
+        run: npm ci
       - name: Test
         run: npm run test:coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: -Dsonar.organization=jbwittner -Dsonar.projectKey=jbwittner_my_home_front -Dsonar.sources=. -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+        env:
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
