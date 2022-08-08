@@ -9,6 +9,7 @@ env:
 jobs:
   Clean_install:
     runs-on: ubuntu-20.04
+    if: ${{ github.triggering_actor != 'dependabot[bot]' }}
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
@@ -22,6 +23,7 @@ jobs:
         run: npm ci
   Check_eslint:
     runs-on: ubuntu-20.04
+    if: ${{ github.triggering_actor != 'dependabot[bot]' }}
     needs:
       - Clean_install
     steps:
@@ -39,6 +41,7 @@ jobs:
         run: npm run eslint
   Check_prettier:
     runs-on: ubuntu-20.04
+    if: ${{ github.triggering_actor != 'dependabot[bot]' }}
     needs:
       - Clean_install
     steps:
@@ -56,6 +59,7 @@ jobs:
         run: npm run prettier
   Build:
     runs-on: ubuntu-20.04
+    if: ${{ github.triggering_actor != 'dependabot[bot]' }}
     needs:
       - Check_eslint
       - Check_prettier
@@ -74,6 +78,7 @@ jobs:
         run: npm run build
   Test_and_sonar:
     runs-on: ubuntu-20.04
+    if: ${{ github.triggering_actor != 'dependabot[bot]' }}
     needs:
       - Build
     steps:
