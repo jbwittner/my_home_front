@@ -4,7 +4,6 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jbwittner/my_home_front)
 
-
 ## Available Scripts
 
 In the project directory, you can run:
