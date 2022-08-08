@@ -5,7 +5,7 @@ github:
     # enable for the master/default branch (defaults to true)
     master: true
     # enable for all branches in this repo (defaults to false)
-    branches: true
+    branches: false
     # enable for pull requests coming from this repo (defaults to true)
     pullRequests: false
     # enable for pull requests coming from forks (defaults to false)
@@ -17,11 +17,12 @@ github:
     # add a label once the prebuild is ready to pull requests (defaults to false)
     addLabel: prebuilt-in-gitpod
 
+ports:
+  - name: Web App
+    description: The frontend of the application
+    port: 3000
+    onOpen: open-browser
+
 tasks:
   - before: cp .gitpod/.npmrc ~/.npmrc
-  - init: npm ci # runs during prebuild
-  - command: echo 'start script'
-
-ports:
-  - port: 3000
-    onOpen: open-browser
+  - init: npm ci
