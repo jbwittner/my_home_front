@@ -25,4 +25,4 @@ ports:
 
 tasks:
   - before: cp .gitpod/.npmrc ~/.npmrc
-  - init: npm ci # runs during prebuild
+  - init: npm ci
