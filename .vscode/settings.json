@@ -1,4 +1,5 @@
 {
-    "debug.terminal.clearBeforeReusing": true,
-    "editor.tabSize": 4,
+  "debug.terminal.clearBeforeReusing": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
 }

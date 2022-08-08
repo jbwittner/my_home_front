@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended",
+    "plugin:json/recommended"
+  ],
+  "plugins": ["json"],
+  "rules": {
+    "json/*": ["error", {}]
+  }
+}
