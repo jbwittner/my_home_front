@@ -19,6 +19,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Clean install
         run: npm ci
   Check_eslint:
@@ -35,8 +48,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Check eslint
         run: npm run eslint
   Check_prettier:
@@ -53,8 +77,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Check prettier
         run: npm run prettier
   Build:
@@ -72,8 +107,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Build
         run: npm run build
   Test_and_sonar:
@@ -90,8 +136,19 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Test
         run: npm run test:coverage
       - name: SonarCloud Scan
