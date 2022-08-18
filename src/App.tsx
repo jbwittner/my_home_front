@@ -1,7 +1,29 @@
+import { useRegistration } from 'hook/serveur/AuthentificationAPI';
 import React from 'react';
 import Routes from 'routes';
 
 function App() {
+  const onSucess = () => {
+    console.log('sucess');
+  };
+
+  const onError = () => {
+    console.log('error');
+  };
+
+  const callRegistration = useRegistration({
+    onSuccess: onSucess,
+    onError: onError,
+  });
+
+  callRegistration({
+    username: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    password: '',
+  });
+
   return (
     <div className="App">
       <header className="App-header">
