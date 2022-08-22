@@ -21,7 +21,7 @@ jobs:
       - name: Cache local node modules
         uses: actions/cache@v3
         with:
-          path: client_axios/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{github.sha}}
           restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Clean install
@@ -41,7 +41,7 @@ jobs:
       - name: Cache local node modules
         uses: actions/cache@v3
         with:
-          path: client_axios/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{github.sha}}
           restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Check eslint
@@ -61,7 +61,7 @@ jobs:
       - name: Cache local node modules
         uses: actions/cache@v3
         with:
-          path: client_axios/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{github.sha}}
           restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Check prettier
@@ -82,7 +82,7 @@ jobs:
       - name: Cache local node modules
         uses: actions/cache@v3
         with:
-          path: client_axios/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{github.sha}}
           restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Build
@@ -102,7 +102,7 @@ jobs:
       - name: Cache local node modules
         uses: actions/cache@v3
         with:
-          path: client_axios/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{github.sha}}
           restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Test
