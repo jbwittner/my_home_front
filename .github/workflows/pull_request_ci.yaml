@@ -6,6 +6,7 @@ on:
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   CI: true
+  node_version: 16.15.1
 jobs:
   Clean_install:
     runs-on: ubuntu-20.04
@@ -15,10 +16,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: ${{env.node_version}}
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
+      - name: Cache local node modules
+        uses: actions/cache@v3
+        with:
+          path: client_axios/node_modules
+          key: ${{ runner.os }}-node_modules-${{github.sha}}
+          restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Clean install
         run: npm ci
   Check_eslint:
@@ -31,12 +36,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: ${{env.node_version}}
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache local node modules
+        uses: actions/cache@v3
+        with:
+          path: client_axios/node_modules
+          key: ${{ runner.os }}-node_modules-${{github.sha}}
+          restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Check eslint
         run: npm run eslint
   Check_prettier:
@@ -49,12 +56,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: ${{env.node_version}}
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache local node modules
+        uses: actions/cache@v3
+        with:
+          path: client_axios/node_modules
+          key: ${{ runner.os }}-node_modules-${{github.sha}}
+          restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Check prettier
         run: npm run prettier
   Build:
@@ -68,12 +77,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: ${{env.node_version}}
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache local node modules
+        uses: actions/cache@v3
+        with:
+          path: client_axios/node_modules
+          key: ${{ runner.os }}-node_modules-${{github.sha}}
+          restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Build
         run: npm run build
   Test_and_sonar:
@@ -86,12 +97,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: ${{env.node_version}}
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-      - name: Clean install
-        run: npm ci
+      - name: Cache local node modules
+        uses: actions/cache@v3
+        with:
+          path: client_axios/node_modules
+          key: ${{ runner.os }}-node_modules-${{github.sha}}
+          restore-keys: ${{ runner.os }}-node_modules-${{github.sha}}
       - name: Test
         run: npm run test:coverage
       - name: SonarCloud Scan
