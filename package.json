@@ -29,7 +29,8 @@
     "eslint:ci": "npx eslint --ext .json,.js,.ts,.tsx src/**/*.{json,js,ts,tsx} --max-warnings 0",
     "eslint:write": "npx eslint --fix --ext .json,.js,.ts,.tsx src/**/*.{json,js,ts,tsx}",
     "prettier": "npx prettier --check .",
-    "prettier:write": "npx prettier --write ."
+    "prettier:write": "npx prettier --write .",
+    "mockserver": "docker run -d --rm -p 1080:1080 mockserver/mockserver"
   },
   "browserslist": {
     "production": [
