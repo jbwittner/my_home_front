@@ -17,11 +17,11 @@ function App() {
   });
 
   callRegistration({
-    username: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    password: '',
+    username: 'tata',
+    email: 'tata@toto.com',
+    firstName: 'Firslk',
+    lastName: 'Dkiq',
+    password: 'Doiir4487@',
   });
 
   return (

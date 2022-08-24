@@ -30,7 +30,7 @@
     "eslint:write": "npx eslint --fix --ext .json,.js,.ts,.tsx src/**/*.{json,js,ts,tsx}",
     "prettier": "npx prettier --check .",
     "prettier:write": "npx prettier --write .",
-    "mockserver": "docker run -d --rm -p 1080:1080 mockserver/mockserver"
+    "mockserver": "docker run -v $(pwd):/config -p 1080:1080  mockserver/mockserver -serverPort 1080"
   },
   "browserslist": {
     "production": [

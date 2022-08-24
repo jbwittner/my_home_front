@@ -22,6 +22,11 @@ ports:
     description: The frontend of the application
     port: 3000
     onOpen: open-browser
+  - name: Mock server
+    description: The mock server
+    port: 1080
+    onOpen: open-browser
+    visibility: public
 
 tasks:
   - before: cp .gitpod/.npmrc ~/.npmrc
