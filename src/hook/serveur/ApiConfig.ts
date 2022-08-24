@@ -4,7 +4,7 @@ import {
 } from '@jbwittner/my-home-axios-client';
 
 const configurationParameters: ConfigurationParameters = {
-  basePath: 'https://1080-jbwittner-myhomefront-m16e8s3cz6m.ws-eu62.gitpod.io'
+  basePath: 'http://localhost:1080',
 };
 
 export const API_CONFIGURATION: Configuration = new Configuration(
