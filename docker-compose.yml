@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  mockServer:
+    image: mockserver/mockserver:5.14.0
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_LOG_LEVEL: INFO
+      MOCKSERVER_ENABLE_CORS_FOR_API: true
+      MOCKSERVER_ENABLE_CORS_FOR_ALL_RESPONSES: true
+      MOCKSERVER_CORS_ALLOW_ORIGIN: "*"
+      MOCKSERVER_CORS_ALLOW_METHODS: "CONNECT, DELETE, GET, HEAD, OPTIONS, POST, PUT, PATCH, TRACE"
+      MOCKSERVER_CORS_ALLOW_HEADERS: "Allow, Content-Encoding, Content-Length, Content-Type, ETag, Expires, Last-Modified, Location, Server, Vary, Authorization"
+      MOCKSERVER_CORS_ALLOW_CREDENTIALS: true
+      MOCKSERVER_CORS_MAX_AGE_IN_SECONDS: 300

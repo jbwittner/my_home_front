@@ -4,7 +4,7 @@ import {
 } from '@jbwittner/my-home-axios-client';
 
 const configurationParameters: ConfigurationParameters = {
-  basePath: 'http://localhost:1080',
+  basePath: '/api',
 };
 
 export const API_CONFIGURATION: Configuration = new Configuration(
