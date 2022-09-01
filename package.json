@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
+    "@emotion/styled": "^11.10.4",
     "@jbwittner/my-home-axios-client": "^0.2.0",
     "@mui/material": "^5.10.2",
     "@types/jest": "^28.1.8",
