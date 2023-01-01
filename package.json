@@ -6,7 +6,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@jbwittner/my-home-axios-client": "^0.2.0",
-    "@mui/material": "^5.10.2",
+    "@mui/material": "^5.11.2",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.7.13",
     "@types/react": "^18.0.17",
